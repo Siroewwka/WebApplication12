@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication1.Models.Product>
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    Создать заявку
+</h3>
+<br />
+<form method="post" action="">
+    <table>
+        <thead>
+            <tr>
+                <td>Страна(откуда)</td>
+                <td>Город(Куда)</td>
+                <td>Категория</td>
+                <td>Что привезти</td>
+                <td>Описание товара</td>
+                <td>Максимальный вес(г)</td>
+                <td>Сумма вознаграждения (руб)</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select name="Country">
+                        @{foreach (var Country in ViewBag.Countrys)
+                            {
+                                <option value=@Country.ID> @Country.Name </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select name="City">
+                        @{foreach (var City in ViewBag.Cities)
+                            {
+                                <option value=@City.ID> @City.Name </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select name="Category">
+                        @{foreach (var Category in ViewBag.Categories)
+                            {
+                                <option value=@Category.ID> @Category.Name </option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="Product" />
+                </td>
+                <td>
+                    <input type="text" name="ProductInfo" />
+                </td>
+                <td>
+                    <input type="number" name="Weight" />
+                </td>
+                <td>
+                    <input type="number" name="Summa" />
+                </td>
+                <td colspan="2"><input type="submit" value="Создать заявку" /></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
